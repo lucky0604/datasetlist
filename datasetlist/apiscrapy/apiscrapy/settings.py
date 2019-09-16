@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for datascrapy project
+# Scrapy settings for apiscrapy project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'datascrapy'
+BOT_NAME = 'apiscrapy'
 
-SPIDER_MODULES = ['datascrapy.spiders']
-NEWSPIDER_MODULE = 'datascrapy.spiders'
+SPIDER_MODULES = ['apiscrapy.spiders']
+NEWSPIDER_MODULE = 'apiscrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'datascrapy (+http://www.yourdomain.com)'
+#USER_AGENT = 'apiscrapy (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -46,14 +46,14 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'datascrapy.middlewares.DatascrapySpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'apiscrapy.middlewares.ApiscrapySpiderMiddleware': 543,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'datascrapy.middlewares.DatascrapyDownloaderMiddleware': 543,
+#    'apiscrapy.middlewares.ApiscrapyDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,8 +65,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'datascrapy.pipelines.DatascrapyPipeline': 300,
-   'datascrapy.pipelines.ImagePipeline': 300,
+   'apiscrapy.pipelines.ApiscrapyPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -89,6 +88,3 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-IMAGES_STORE = './avatar'
-IMAGES_EXPIRES = 30

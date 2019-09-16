@@ -8,7 +8,25 @@
 import scrapy
 
 
-class DatascrapyItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class ImageItem(scrapy.Item):
+    image_urls = scrapy.Field()
+
+class LanguageItem(scrapy.Item):
+    language = scrapy.Field()
+    language_cnt = scrapy.Field()
+
+class RepoItem(scrapy.Item):
+    repo = scrapy.Field()
+    repo_watch = scrapy.Field()
+    repo_star = scrapy.Field()
+    repo_fork = scrapy.Field()
+
+class ResultCntItem(scrapy.Item):
+    result_cnt = scrapy.Field()
+
+class UserItem(scrapy.Item):
+    user = scrapy.Field()
+    user_repo = scrapy.Field()
+    user_star = scrapy.Field()
+    user_follower = scrapy.Field()
+    user_following = scrapy.Field()
