@@ -53,19 +53,30 @@ class GithubSpider(scrapy.Spider):
         return urls
 
     def parse(self, response):
-        item = GithubscrapyItem()
-        for repo in response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li"):
-            item['project_name'] = repo.xpath('//li/div/h3/a[@class="v-align-middle"]/text()').extract()
-            item['stars'] = repo.xpath('//li/div/div/a[@class="muted-link"]/text()').extract()
-            item['category'] = repo.xpath('//li/div/div/div/span/span/text()').extract()
-            # item['project_name'] = repo.xpath('//li/div[0]/h3/a/text()').extract()
-            # item['category'] = repo.xpath('//li/div[1]/div[0]/div/span/span[1]/text()').extract()
-            print('---------------- parse item -----------------')
+        # item = GithubscrapyItem()
+        # for repo in response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li"):
+        #     item['project_name'] = repo.xpath('//li/div/h3/a[@class="v-align-middle"]/text()').extract()
+        #     item['stars'] = repo.xpath('//li/div/div/a[@class="muted-link"]/text()').extract()
+        #     item['category'] = repo.xpath('//li/div/div/div/span/span/text()').extract()[0]
+        #     # item['project_name'] = repo.xpath('//li/div[0]/h3/a/text()').extract()
+        #     # item['category'] = repo.xpath('//li/div[1]/div[0]/div/span/span[1]/text()').extract()
+        #     print('---------------- parse item -----------------')
+        #     print(item)
+        #     print(' =============== parse item ================')
+        #     yield item
+        for index, repo in enumerate(response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li")):
+            item = GithubscrapyItem()
+            item['stars'] = repo.xpath('./div/div/a[@class="muted-link"]/text()').getall()
+            item['category'] = repo.xpath('./div/div/div/span/span/text()').get()
+            item['project_name'] = repo.xpath('./div/h3/a[@class="v-align-middle"]/text()').get()
+            item['desc'] = repo.xpath('./div/p/text()').get()
+            item['license_desc'] = repo.xpath('./div/div/p/text()').get()
+            print('-------------------- item ---------------')
             print(item)
-            print(' =============== parse item ================')
-            print('---------------- parse repo -----------------')
+            print('==================== item ===============')
+            print('-------------------repo----------------')
             print(repo)
-            print(' =============== parse repo ================')
-            yield item
-            
-            
+            print('===================================')
+            print('*******************index****************')
+            print(index)
+            print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
