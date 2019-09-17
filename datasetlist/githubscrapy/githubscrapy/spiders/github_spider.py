@@ -71,12 +71,4 @@ class GithubSpider(scrapy.Spider):
             item['project_name'] = repo.xpath('./div/h3/a[@class="v-align-middle"]/text()').get()
             item['desc'] = repo.xpath('./div/p/text()').get()
             item['license_desc'] = repo.xpath('./div/div/p/text()').get()
-            print('-------------------- item ---------------')
-            print(item)
-            print('==================== item ===============')
-            print('-------------------repo----------------')
-            print(repo)
-            print('===================================')
-            print('*******************index****************')
-            print(index)
-            print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+            yield item
