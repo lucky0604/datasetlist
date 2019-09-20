@@ -2,7 +2,7 @@ import os
 import redis
 
 from appdirs import AppDirs
-from datetime import datetime
+from datetime import timedelta
 
 from server.utils.date import utcnow
 
@@ -107,4 +107,13 @@ class BaseConfig(object):
 
     CELERY_RESULT_BACKEND = CELERY_BROKER_URL
     CELERY_ACCEPT_CONTENT = ('json', 'pickle')
+
+    # ===========================================================
+    # security
+    # ===========================================================
+    SECURITY_DATETIME_FACTORY = utcnow
+
+    # specify which user field attributes can be used for login
+    SECURITY_USER_IDENTIFY_ATTRIBUTES = ['email', 'username']
+
     
