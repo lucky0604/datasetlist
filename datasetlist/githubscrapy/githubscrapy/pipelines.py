@@ -23,7 +23,7 @@ class GithubscrapyPipeline(object):
         license_desc = item.get('license_desc').split()[0]
         stars = item.get('stars')[1].split()[0]
         
-        sql = "insert into github(project_name, category, desc_info, license_desc, stars, contributor_user, project_year, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        sql = "insert into datasetlist(project_name, category, desc_info, license_desc, stars, contributor_user, project_year, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
         self.cur.execute(sql, (project_name, category, desc, license_desc, stars, contributor, None, datetime.now()))
         self.conn.commit()
 
