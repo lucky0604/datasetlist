@@ -10,9 +10,9 @@ from datetime import datetime
 class GithubscrapyPipeline(object):
     def __init__(self):
         # home mac
-        # self.conn = pq.connect(host = 'localhost', user = 'root', passwd = 'lovezt520', db = 'dataset', charset = 'utf8')
+        self.conn = pq.connect(host = 'localhost', user = 'root', passwd = 'lovezt520', db = 'dataset', charset = 'utf8')
         # company's PC
-        self.conn = pq.connect(host = 'localhost', user = 'root', passwd = '111111', db = 'dataset', charset = 'utf8')
+        # self.conn = pq.connect(host = 'localhost', user = 'root', passwd = '111111', db = 'dataset', charset = 'utf8')
         self.cur = self.conn.cursor()
 
     def process_item(self, item, spider):
