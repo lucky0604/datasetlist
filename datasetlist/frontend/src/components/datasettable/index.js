@@ -39,58 +39,56 @@ function createData(name, catories, fat, carbs, protein) {
   return {name, catories, fat, carbs, protein}
 }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9)
-]
-
-export default function DatasetTable() {
+export default function DatasetTable(props) {
   const classes = useStyles()
+  var rows = []
+  if (props.data.length > 0) {
+    rows = props.data
+  }
   return (
-            <Paper className={classes.root}>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Dessert (100g serving)</TableCell>
-                    <TableCell align="right">Calories</TableCell>
-                    <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                    <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                    <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map(row => (
-                    <TableRow key={row.name}>
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">
-                        <ExpansionPanel className={classes.MuiPaperElevation1}>
-                          <ExpansionPanelSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                          >
-                            <Typography className={classes.heading}>{row.carbs}</Typography>
-                          </ExpansionPanelSummary>
-                          <ExpansionPanelDetails>
-                            <Typography>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                              sit amet blandit leo lobortis eget.
-                            </Typography>
-                          </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                      </TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </Paper>
+    <Paper className={classes.root}>
+      <Table className={classes.table} size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>项目名称</TableCell>
+            <TableCell align="left">项目所有者</TableCell>
+            <TableCell align="left">使用语言</TableCell>
+            <TableCell align="left">项目描述</TableCell>
+            <TableCell align="left">获得星数</TableCell>
+            <TableCell align="left">License</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {row.project_name}
+              </TableCell>
+              <TableCell align="left">{row.contributor_user}</TableCell>
+              <TableCell align="left">{row.category}</TableCell>
+              <TableCell align="left">
+                <ExpansionPanel className={classes.MuiPaperElevation1}>
+                  <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography className={classes.heading}>{row.desc_info}</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <Typography>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                      sit amet blandit leo lobortis eget.
+                    </Typography>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              </TableCell>
+              <TableCell align="left">{row.stars}</TableCell>
+              <TableCell align="left">{row.license_desc}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Paper>
   )
 }

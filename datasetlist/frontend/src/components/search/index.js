@@ -11,19 +11,37 @@ import Button from '@material-ui/core/Button'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    minHeight: 30
   },
   button: {
     margin: theme.spacing(1),
+    color: '#ffffff !important'
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 150,
+    maxWidth: 300
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
+  },
+  selectControl: {
+    minHeight: 30,
   }
 }))
+
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 2
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 120
+    }
+  }
+}
+
 
 function SearchGroup() {
   const classes = useStyles()
@@ -50,7 +68,7 @@ function SearchGroup() {
   return (
     <form className={classes.root} autoComplete="off">
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
+        <InputLabel ref={inputLabel} htmlFor="outlined-age-simple" style={{padding: '0'}}>
           Stars
         </InputLabel>
         <Select
@@ -61,6 +79,7 @@ function SearchGroup() {
             name: 'age',
             id: 'outlined-age-simple',
           }}
+          MenuProps={MenuProps}
         >
           <MenuItem value="">
             <em>None</em>
