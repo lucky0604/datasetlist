@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import * as moment from "moment";
 import "./index.scss";
 import {ButtonToolbar, ButtonGroup, Button, Grid, Row, Col} from 'rsuite'
-import 'rsuite/lib/styles/index.less'
 function Header() {
 
   return (

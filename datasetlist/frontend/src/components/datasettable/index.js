@@ -18,23 +18,23 @@ export default function DatasetTable(props) {
   return (
     <div>
       <Table height="600" data={rows} loading={loading} bordered="true">
-        <Column width={150} align="left" fixed>
+        <Column flexGrow={2} align="left" fixed>
           <HeaderCell>项目名称</HeaderCell>
           <Cell dataKey="project_name" />
         </Column>
-        <Column width={150} align="left" fixed>
+        <Column flexGrow={2} align="left" fixed>
           <HeaderCell>项目所有者</HeaderCell>
           <Cell dataKey="contributor_user" />
         </Column>
-        <Column width={500} align="left" fixed>
+        <Column flexGrow={3} align="left" fixed>
           <HeaderCell>项目描述</HeaderCell>
           <Cell dataKey="desc_info" />
         </Column>
-        <Column width={150} align="left" fixed>
+        <Column flexGrow={1} align="left" fixed>
           <HeaderCell>获得星数</HeaderCell>
           <Cell dataKey="stars" />
         </Column>
-        <Column width={150} align="left" fixed>
+        <Column flexGrow={1} align="left" fixed>
           <HeaderCell>License</HeaderCell>
           <Cell dataKey="license_desc" />
         </Column>

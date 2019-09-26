@@ -1,5 +1,6 @@
 import React from 'react'
-import {Form, FormGroup,Button, SelectPicker, ControlLabel, FormControl} from 'rsuite'
+import {ButtonToolbar, Form, FormGroup,Button, SelectPicker, ControlLabel, FormControl} from 'rsuite'
+import './index.scss'
 
 const data = [
   {
@@ -36,8 +37,8 @@ function SearchGroup() {
       <FormGroup>
         <SelectPicker data={data} style={{width: 224}} />
       </FormGroup>
-
-      <Button color="orange">Search</Button>
+      <Button className="searchBtn" style={{color: '#000 !important'}} color="orange">Search</Button>
+      
     </Form>
   )
 }
