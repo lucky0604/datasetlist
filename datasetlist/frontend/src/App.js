@@ -1,27 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import LandingPage from './containers/landingpage'
-import {ThemeProvider} from '@material-ui/styles'
-import {makeStyles, createMuiTheme} from '@material-ui/core/styles'
-import orange from '@material-ui/core/colors/orange'
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: orange[700],
-    },
-  }
-})
+import React from "react";
+import LandingPage from "./containers/landingpage";
+import 'rsuite/dist/styles/rsuite-default.css'
+import {Button} from 'rsuite'
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <LandingPage />
-      </div>
-    </ThemeProvider>
-    
+    <div className="App">
+      <LandingPage />
+    </div>
   );
 }
 
