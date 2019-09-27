@@ -1,15 +1,16 @@
-import React from "react";
-import LandingPage from "./containers/landingpage";
+import React from "react"
+import routes from './routes'
 import 'rsuite/dist/styles/rsuite-default.css'
-import './custom_theme/theme.less'
-import {Button} from 'rsuite'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
+      <Router>
+        {routes}
+      </Router>
     </div>
-  );
+  )
 }
 
 export default App;

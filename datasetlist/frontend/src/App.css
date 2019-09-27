@@ -20,3 +20,7 @@
   color: #61dafb;
 }
 
+.rs-nav .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle, .rs-nav .rs-nav-item-active > .rs-nav-item-content, .rs-nav .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle:hover, .rs-nav .rs-nav-item-active > .rs-nav-item-content:hover, .rs-nav .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle:focus, .rs-nav .rs-nav-item-active > .rs-nav-item-content:focus, .rs-nav .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle:active, .rs-nav .rs-nav-item-active > .rs-nav-item-content:active {
+  color: #f5a623 !important;
+  background: transparent;
+}

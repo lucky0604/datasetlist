@@ -7,6 +7,7 @@ import {
   Col,
   Panel
 } from 'rsuite'
+import './index.scss'
 
 const {Column, HeaderCell, Cell, Pagination} = Table
 const styles = {width: 100}
@@ -50,6 +51,7 @@ export default function DatasetTable(props) {
   const [active, setActive] = useState('home')
 
   var rows = []
+  console.log(props, ' ----------------- table props -------------------')
   if (props.data.length > 0) {
     rows = props.data
   }
