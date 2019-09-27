@@ -9,7 +9,8 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   bannerText: {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: '40px'
   }
 }))
 
