@@ -81,8 +81,8 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': 3306,
         'USER': 'root',
-        'PASSWORD': 'lovezt520',
-        # 'PASSWORD': '111111',
+        # 'PASSWORD': 'lovezt520',
+        'PASSWORD': '111111',
         'NAME': 'dataset',
     }
 }
