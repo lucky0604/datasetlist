@@ -1,5 +1,5 @@
-import React from 'react'
-import {ButtonToolbar, Form, FormGroup,Button, SelectPicker, ControlLabel, FormControl} from 'rsuite'
+import React, {useState} from 'react'
+import {ButtonToolbar, Form, FormGroup,Button, SelectPicker, ControlLabel, FormControl, Input} from 'rsuite'
 import './index.scss'
 
 const data = [
@@ -26,18 +26,39 @@ const data = [
   }
 ]
 
-function SearchGroup() {
+function SearchGroup(props) {
+
+  const [searchValue, setSearchValue] = useState('')
+
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e)
+  }
+
+  const resetInputField = () => {
+    setSearchValue('')
+  }
+
+  const callSearchFunction = (e) => {
+    e.preventDefault()
+    props.search(searchValue)
+    // resetInputField()
+  }
 
   return (
     <Form layout="inline">
-      <FormGroup>
+      {/* <FormGroup>
         <SelectPicker data={data} style={{width: 224}} />
       </FormGroup>
 
       <FormGroup>
         <SelectPicker data={data} style={{width: 224}} />
-      </FormGroup>
-      <Button className="searchBtn" style={{color: '#000 !important'}} color="orange">Search</Button>
+      </FormGroup> */}
+      {/* <FormGroup>
+        <ControlLabel srOnly>Keywords</ControlLabel>
+        <FormControl placeholder="Keywords" name={searchValue} />
+      </FormGroup> */}
+      <Input placeholder="Keywords" onChange={handleSearchInputChanges} />
+      <Button onClick={callSearchFunction} className="searchBtn" style={{color: '#000 !important'}} color="orange">Search</Button>
       
     </Form>
   )

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import * as moment from "moment";
 import "./index.scss";
 import {ButtonToolbar, ButtonGroup, Button, Grid, Row, Col} from 'rsuite'
+import {Link} from 'react-router-dom'
+
 function Header() {
 
   return (
@@ -19,7 +21,11 @@ function Header() {
               </ButtonGroup>
             </ButtonToolbar>
           </Col>
-          <Col xs={3}>Datasets</Col>
+          <Col xs={3}>
+            <Link to="/tools" style={{textDecoration: 'none', color: '#ff8900'}}>
+              Datasets
+            </Link>
+          </Col>
         </Row>
       </Grid>
     </div>
