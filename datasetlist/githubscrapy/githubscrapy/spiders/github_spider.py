@@ -7,7 +7,7 @@ class GithubSpider(scrapy.Spider):
     
     def start_requests(self):
         func = self.parse
-        urls = self.gen_urls(q="stars", expr=">500", s="stars", stop=2)
+        urls = self.gen_urls(q="dataset", expr=">500", s="stars", stop=10)
         for url in urls:
             yield scrapy.Request(url=url, callback=func)
             
@@ -47,23 +47,12 @@ class GithubSpider(scrapy.Spider):
         elif q in ['followers', 'repos', 'location']:
             type = 'Users'
 
-        urls = ['https://github.com/search?p={p}&o=desc&q={q}:"{expr}"&s={s}&type={type}&l={l}&utf8=%E2%9C%93'.format(p=p, expr=expr, q=q, s=s, type=type, l=l)
+        urls = ['https://github.com/search?p={p}&o=desc&q={q}&s={s}:"{expr}"&type={type}&l={l}&utf8=%E2%9C%93'.format(p=p, expr=expr, q=q, s=s, type=type, l=l)
                 for p in range(start, stop)]
 
         return urls
 
     def parse(self, response):
-        # item = GithubscrapyItem()
-        # for repo in response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li"):
-        #     item['project_name'] = repo.xpath('//li/div/h3/a[@class="v-align-middle"]/text()').extract()
-        #     item['stars'] = repo.xpath('//li/div/div/a[@class="muted-link"]/text()').extract()
-        #     item['category'] = repo.xpath('//li/div/div/div/span/span/text()').extract()[0]
-        #     # item['project_name'] = repo.xpath('//li/div[0]/h3/a/text()').extract()
-        #     # item['category'] = repo.xpath('//li/div[1]/div[0]/div/span/span[1]/text()').extract()
-        #     print('---------------- parse item -----------------')
-        #     print(item)
-        #     print(' =============== parse item ================')
-        #     yield item
         for index, repo in enumerate(response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li")):
             item = GithubscrapyItem()
             item['stars'] = repo.xpath('./div/div/a[@class="muted-link"]/text()').getall()

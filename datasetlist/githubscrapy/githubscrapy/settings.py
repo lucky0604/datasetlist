@@ -65,7 +65,7 @@ SPIDER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'githubscrapy.pipelines.GithubscrapyPipeline': 300,
+   'githubscrapy.pipelines.GithubscrapyPipeline': 1000,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
