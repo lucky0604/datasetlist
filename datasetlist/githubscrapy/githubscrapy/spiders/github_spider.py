@@ -53,11 +53,12 @@ class GithubSpider(scrapy.Spider):
         return urls
 
     def parse(self, response):
+        print(response, ' --------------- response --------------')
         for index, repo in enumerate(response.css('.repo-list').xpath("//ul[contains(@class, 'repo-list')]/li")):
             item = GithubscrapyItem()
             item['stars'] = repo.xpath('./div/div/a[@class="muted-link"]/text()').getall()
             item['category'] = repo.xpath('./div/div/div/span/span/text()').get()
-            item['project_name'] = repo.xpath('./div/h3/a[@class="v-align-middle"]/text()').get()
+            item['project_name'] = "".join(repo.xpath('./div/h3/a[@class="v-align-middle"]/descendant::text()').getall())
             item['desc'] = repo.xpath('./div/p/text()').get()
             item['license_desc'] = repo.xpath('./div/div/p/text()').get()
             yield item

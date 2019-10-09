@@ -56,6 +56,8 @@ export default function DatasetTable(props) {
   const [dataset, setDataset] = useState([])
   const [searchValue, setSearchValue] = useState('')
 
+  console.log(displayLength, ' --------------------- display length -----------------')
+
   
   const handleSelect = (activeKey) => {
     setActive(activeKey)
@@ -68,8 +70,6 @@ export default function DatasetTable(props) {
     }
     getIndexData()
   }, [])
-
-  
 
   const search = (e) => {
     setSearchValue(e)
@@ -90,6 +90,8 @@ export default function DatasetTable(props) {
     setPage(1)
     setDisplayLength(dataKey)
   }
+
+  console.log(dataset, ' -------------------------- dataset ---------------------')
 
   return (
     <div>
@@ -139,6 +141,8 @@ export default function DatasetTable(props) {
               activePage={page}
               displayLength={displayLength}
               total={dataset.length}
+              onChangePage={handleChangePage}
+              onChangeLength={handleChangeLength}
             />
           </Col>
         </Row>

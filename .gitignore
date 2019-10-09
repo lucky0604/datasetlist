@@ -106,3 +106,5 @@ docs/_build/
 
 node_modules/
 yarn.lock
+
+.idea/
