@@ -10,7 +10,8 @@ from .api import views
 
 urlpatterns = [
     path('datasets/', views.DatasetListViewSet.as_view()),
-    path('datasets/<int:pk>/', views.DatasetDetailView.as_view())
+    #path('datasets/<int:pk>/', views.DatasetDetailView.as_view()),
+    #path('datasets/<category_info>/', views.DatasetListByCateViewSet.as_view(), name = 'category_api')
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)

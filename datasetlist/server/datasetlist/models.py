@@ -8,15 +8,30 @@
 from django.db import models
 
 
-class AlembicVersion(models.Model):
-    version_num = models.CharField(primary_key=True, max_length=32)
 
-    class Meta:
-        managed = False
-        db_table = 'alembic_version'
+# class DatasetCategory(models.Model):
+#     CATEGORY_INFO = (
+#         ('1', 'CV'),
+#         ('2', 'NLP'),
+#         ('3', 'Self-driving'),
+#         ('4', 'QA'),
+#         ('5', 'Audio'),
+#         ('6', 'Medical')
+#     )
+#     index = models.IntegerField(unique=True, auto_created=True, default=0)
+#     cateinfo = models.CharField(max_length=10, default='', choices=CATEGORY_INFO)
 
 
 class Datasetlist(models.Model):
+    CATEGORY_INFO = (
+        ('cv', 'CV'),
+        ('nlp', 'NLP'),
+        ('selfdriving', 'Self-driving'),
+        ('qa', 'QA'),
+        ('audio', 'Audio'),
+        ('medical', 'Medical')
+    )
+
     id = models.AutoField(primary_key=True)
     project_name = models.CharField(max_length=100)
     category = models.CharField(max_length=100, blank=True, null=True)
@@ -26,7 +41,5 @@ class Datasetlist(models.Model):
     contributor_user = models.CharField(max_length=20, blank=True, null=True)
     project_year = models.CharField(max_length=20, blank=True, null=True)
     created_at = models.CharField(max_length=40, blank=True, null=True)
+    cateinfo = models.CharField(max_length=10, default='', choices=CATEGORY_INFO)
 
-    class Meta:
-        managed = True
-        db_table = 'datasetlist'

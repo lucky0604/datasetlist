@@ -1,5 +1,7 @@
 from django.contrib import admin
-from datasetlist.models import Datasetlist
+from .models import Datasetlist
 # Register your models here.
+class DatasetListAdmin(admin.ModelAdmin):
+    list_display = ['project_name', 'created_at']
 
-admin.site.register(Datasetlist)
+admin.site.register(Datasetlist, DatasetListAdmin)

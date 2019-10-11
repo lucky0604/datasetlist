@@ -20,10 +20,10 @@ from rest_framework import status
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class DatasetListViewSet(generics.ListCreateAPIView):
+class DatasetListViewSet(generics.ListAPIView):
     queryset = Datasetlist.objects.all()
     serializer_class = DatasetSerializer
-    search_fields = ['project_name']
+    search_fields = ['project_name', 'cateinfo']
     filter_backends = (filters.SearchFilter,)
 
 class DatasetDetailView(APIView):
@@ -50,3 +50,13 @@ class DatasetDetailView(APIView):
         dataset = self.get_object(pk)
         dataset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+# class DatasetListByCateViewSet(generics.ListAPIView):
+#     serializer_class = DatasetSerializer
+#
+#     def get_queryset(self, *args, **kwargs):
+#         queryset = Datasetlist.objects.filter(
+#             category_info__category_info = self.kwargs['cateinfo']
+#         )
+#
+#         return queryset
