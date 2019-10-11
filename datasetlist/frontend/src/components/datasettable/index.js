@@ -93,6 +93,16 @@ export default function DatasetTable(props) {
 
   console.log(dataset, ' -------------------------- dataset ---------------------')
 
+  const getData = () => {
+    return dataset.filter((v, i) => {
+      const start = displayLength * (page - 1)
+      const end = start + displayLength
+      return i >= start && i < end
+    })
+  }
+
+  const dataResult = getData()
+
   return (
     <div>
       <Grid fluid>
@@ -104,7 +114,7 @@ export default function DatasetTable(props) {
             </Panel>
           </Col>
           <Col xs={21}>
-            <Table height="600" data={dataset} loading={loading} bordered="true">
+            <Table height="600" data={dataResult} loading={loading} bordered="true">
               <Column flexGrow={2} align="left" fixed>
                 <HeaderCell>Dataset Name</HeaderCell>
                 <Cell dataKey="project_name" />
