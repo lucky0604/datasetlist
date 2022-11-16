@@ -12,7 +12,7 @@ celery==5.2.2
 cffi==1.12.3
 Click==7.0
 constantly==15.1.0
-cryptography==2.7
+cryptography==3.2
 cssselect==1.1.0
 Flask==1.1.1
 Flask-Alembic==2.0.1
